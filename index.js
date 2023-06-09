@@ -59,38 +59,44 @@ inquirer
 <body>
     <section>
         <h3>## Description</h3>
-        <p></p>
+        <p>${response.description}</p>
     </section>
     <section>
         <h3>## Table of Contents</h3>
-        <p></p>
+        <p>${response.contents}</p>
     </section>
     <section>
         <h3>## Installation</h3>
-        <p></p>
+        <p>${response.installation}</p>
     </section>
     <section>
         <h3>## Usage</h3>
-        <p></p>
+        <p>${response.usage}</p>
     </section>
     <section>
         <h3>## License</h3>
-        <p></p>
+        <p>${response.license}</p>
     </section>
     <section>
         <h3>## Contributing</h3>
-        <p></p>
+        <p>${response.contribution}</p>
     </section>
     <section>
         <h3>## Tests</h3>
-        <p></p>
+        <p>${response.test}</p>
     </section>
     <section>
         <h3>## Questions</h3>
-        <p></p>
+        <p>${response.questions}</p>
     </section>
     <script src="./index.js"></script>
 </body>
 </html>
         `
+
+fs.writeFile('example.html', template, (error) => {
+    if (error) {
+        console.log(error);
+    }
+})
     })
