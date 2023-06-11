@@ -6,14 +6,19 @@ inquirer
     .prompt([
         {
             type: 'input',
-            message: 'Please type a detailed description of the application or project.',
-            name: 'description',
+            message: 'Please tprovide a name for this project.',
+            name: 'title',
         },
         {
             type: 'input',
-            message: 'Please type your Table of Contents here.',
-            name: 'contents',
+            message: 'Please type a detailed description of the application or project.',
+            name: 'description',
         },
+        // {
+        //     type: 'input',
+        //     message: 'Please type your Table of Contents here.',
+        //     name: 'contents',
+        // },
         {
             type: 'input',
             message: 'Please describe installation process.',
@@ -25,8 +30,9 @@ inquirer
             name: 'usage',
         },
         {
-            type: 'input',
+            type: 'list',
             message: 'Please choose a license.',
+            choices: ['MIT', 'Apache 2.o', 'Boost Software License 1.0', 'Eclipse Public License 1.0', 'IBM Public License Version 1.0'],
             name: 'license',
         },
         {
@@ -42,61 +48,70 @@ inquirer
         {
             type: 'input',
             message: 'Please enter information to where people can reach you with questions about the application.',
-            name: 'questions',
+            name: 'contact',
         },
     ]).then (function(response) {
         console.log(response)
         const { description, contents, installation, usage, license, contribution, test, questions } = response;
         const template = `
-        <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <section>
-        <h3>## Description</h3>
-        <p>${response.description}</p>
-    </section>
-    <section>
-        <h3>## Table of Contents</h3>
-        <p>${response.contents}</p>
-    </section>
-    <section>
-        <h3>## Installation</h3>
-        <p>${response.installation}</p>
-    </section>
-    <section>
-        <h3>## Usage</h3>
-        <p>${response.usage}</p>
-    </section>
-    <section>
-        <h3>## License</h3>
-        <p>${response.license}</p>
-    </section>
-    <section>
-        <h3>## Contributing</h3>
-        <p>${response.contribution}</p>
-    </section>
-    <section>
-        <h3>## Tests</h3>
-        <p>${response.test}</p>
-    </section>
-    <section>
-        <h3>## Questions</h3>
-        <p>${response.questions}</p>
-    </section>
-    <script src="./index.js"></script>
-</body>
-</html>
-        `
+${renderLicenseBadge(response.license)}
+## Title
+${response.title}
+## Description
+${response.description}
+## Table of Contents
+[Usage](#Usage)
+[License](#license)
+[Contributing](#contributing)
+[Tests](#tests)
+[Contact](#contact)
+## Installation
+${response.installation}
+## Usage
+${response.usage}
+## License
+${renderLicenseBadge(response.license)}
+## Contributing
+${response.contribution}
+## Tests
+${response.test}
+## Contact
+${response.contact}
+`
 
-fs.writeFile('example.html', template, (error) => {
+fs.writeFile('example.md', template, (error) => {
     if (error) {
         console.log(error);
     }
 })
     })
+
+
+function renderLicenseBadge(license) {
+    if (license !== "none") {
+        return `![GitHub License](https://img.shields.io/badge/License-${license}-yellow.svg)]`
+    }
+}
+
+
+
+
+function renderLicenseLink(license) {
+    if (license !== "none") {
+        return `[License](#license)`;
+    }
+    return "";
+
+}
+`[License](#License)`
+
+function renderLicenseSection(license) {
+    if (license !== "none") {
+        return `## License
+            Licensed under the ${license} license.`
+    }
+    return "";
+}
+
+
+
