@@ -1,24 +1,24 @@
 
-![GitHub License](https://img.shields.io/badge/License-MIT-yellow.svg)]
+![GitHub License](https://img.shields.io/badge/License-MIT-yellow.svg)
 ## Title
-README Generator
+f
 ## Description
-This is an application that will generate a high quality reasme for any project running command line actions.
+f
 ## Table of Contents
-[Usage](#Usage)
-[License](#license)
-[Contributing](#contributing)
-[Tests](#tests)
-[Contact](#contact)
+- [Usage](#Usage)
+- [License](#license)
+- [Contributing](#contributing)
+- [Tests](#tests)
+- [Contact](#contact)
 ## Installation
-no installation for this project.
+f
 ## Usage
-follow these prompts.
+f
 ## License
-![GitHub License](https://img.shields.io/badge/License-MIT-yellow.svg)]
+![GitHub License](https://img.shields.io/badge/License-MIT-yellow.svg)
 ## Contributing
-a couple peeps
+f
 ## Tests
-no tests
+f
 ## Contact
-Email: b.connolly1088@gmail.com GitHub: bconnolly1088
+f

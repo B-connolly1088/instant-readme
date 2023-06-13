@@ -52,31 +52,31 @@ inquirer
         },
     ]).then (function(response) {
         console.log(response)
-        const { description, contents, installation, usage, license, contribution, test, questions } = response;
+        const { description, contents, installation, usage, license, contribution, test, contact, title } = response;
         const template = `
-${renderLicenseBadge(response.license)}
+${renderLicenseBadge(license)}
 ## Title
-${response.title}
+${title}
 ## Description
-${response.description}
+${description}
 ## Table of Contents
-[Usage](#Usage)
-[License](#license)
-[Contributing](#contributing)
-[Tests](#tests)
-[Contact](#contact)
+- [Usage](#Usage)
+- [License](#license)
+- [Contributing](#contributing)
+- [Tests](#tests)
+- [Contact](#contact)
 ## Installation
-${response.installation}
+${installation}
 ## Usage
-${response.usage}
+${usage}
 ## License
-${renderLicenseBadge(response.license)}
+${renderLicenseBadge(license)}
 ## Contributing
-${response.contribution}
+${contribution}
 ## Tests
-${response.test}
+${test}
 ## Contact
-${response.contact}
+${contact}
 `
 
 fs.writeFile('example.md', template, (error) => {
@@ -89,29 +89,12 @@ fs.writeFile('example.md', template, (error) => {
 
 function renderLicenseBadge(license) {
     if (license !== "none") {
-        return `![GitHub License](https://img.shields.io/badge/License-${license}-yellow.svg)]`
+        return `![GitHub License](https://img.shields.io/badge/License-${license}-yellow.svg)`
     }
 }
 
 
 
-
-function renderLicenseLink(license) {
-    if (license !== "none") {
-        return `[License](#license)`;
-    }
-    return "";
-
-}
-`[License](#License)`
-
-function renderLicenseSection(license) {
-    if (license !== "none") {
-        return `## License
-            Licensed under the ${license} license.`
-    }
-    return "";
-}
 
 
 
