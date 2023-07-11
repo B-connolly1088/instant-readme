@@ -6,7 +6,7 @@ inquirer
     .prompt([
         {
             type: 'input',
-            message: 'Please tprovide a name for this project.',
+            message: 'Please provide a name for this project.',
             name: 'title',
         },
         {
